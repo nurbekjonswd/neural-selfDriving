@@ -8,18 +8,16 @@ class Car {
     this.speed = 0;
     this.acceliration = 0.2;
     this.maxSpeed = 3;
-    this.friction = 0.3;
+    this.friction = 0.05;
     this.controls = new Controls();
   }
 
   update() {
     if (this.controls.forward) {
       this.speed += this.acceliration;
-      console.log((this.speed += this.acceliration));
     }
     if (this.controls.reverse) {
       this.speed -= this.acceliration;
-      console.log((this.speed -= this.acceliration));
     }
 
     if (this.speed > this.maxSpeed) {
@@ -35,9 +33,9 @@ class Car {
     if (this.speed < 0) {
       this.speed += this.friction;
     }
-    // if (Math.abs(this.speed) < this.friction) {
-    //   this.speed = 0;
-    // }
+    if (Math.abs(this.speed) < this.friction) {
+      this.speed = 0;
+    }
 
     if (this.controls.left) {
       this._x -= 2;
