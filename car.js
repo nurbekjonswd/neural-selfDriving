@@ -35,6 +35,17 @@ class Car {
     if (this.speed < 0) {
       this.speed += this.friction;
     }
+    // if (Math.abs(this.speed) < this.friction) {
+    //   this.speed = 0;
+    // }
+
+    if (this.controls.left) {
+      this._x -= 2;
+    }
+    if (this.controls.right) {
+      this._x += 2;
+    }
+
     this._y -= this.speed;
   }
 
