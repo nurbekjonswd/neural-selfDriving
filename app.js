@@ -3,14 +3,16 @@ const canvas = document.getElementById("myCanvas");
 canvas.width = 300;
 
 const cxt = canvas.getContext("2d");
-const car = new Car(150, 100, 30, 50);
-
-// car.draw(cxt);
+const road = new Road(canvas.width / 2, canvas.width * 0.9);
+const car = new Car(road.getLaneCenter(1), 100, 30, 50);
 
 animate();
 
 function animate() {
+  car.update();
+
   canvas.height = window.innerHeight;
-  car.update(), car.draw(cxt);
+  road.draw(cxt);
+  car.draw(cxt);
   requestAnimationFrame(animate);
 }
